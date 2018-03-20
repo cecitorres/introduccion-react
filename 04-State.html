@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>04 State</title>
+  <style>
+  </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Welcome extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            name: props.name
+          }
+        }
+        
+        updateName = (event) => {
+          this.setState(
+            {name: event.target.value}
+          );
+        }
+        
+        render() {
+          return (
+            <div>
+              <h1>Hello, {this.state.name}</h1>
+              <input onChange={this.updateName} value={this.state.name}/>
+            </div>
+          );
+        }
+      }
+
+      function App() {
+        return (
+          <div>
+            <Welcome name="Sara" />
+            <Welcome name="Cahal" />
+            <Welcome name="Edite" />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('app'));      
+    </script>
+</body>
+</html>
